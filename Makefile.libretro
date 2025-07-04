@@ -621,8 +621,10 @@ else ifeq ($(platform), emscripten)
    pthread ?= 0
    fpic    := -fPIC
    NO_MMAP = 1
-   # we can use -lz for emscripten's built-in zlib port
-   WANT_ZLIB=0
+
+   # 07/04/25 for the wasi setup there will be a libz.a ready
+   WANT_ZLIB=1
+
    CFLAGS += -DNO_DYLIB -DNO_SOCKET
    CFLAGS += -msimd128 -ftree-vectorize
    # when compiling with pthreads...
